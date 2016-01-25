@@ -1,0 +1,94 @@
+
+<div class="container">
+
+<div class="row">
+	<div class="col-sm-4">
+		<h1>Прогноз сбережений</h1>
+	</div>
+	<div class="col-sm-2">
+		<label class="interestFlag"><input type="checkbox" ng-model="interestFlag" ng-change="interestFlagChange(interestFlag)"> С вкладами</label>
+	</div>	
+	<div class="col-sm-6 text-right">
+		<form class="form-inline" ng-show="selectedCurrencies.length > 1">
+			<div class="form-group baseCurrencySelector">
+				<label class="control-label">Моя валюта</label>
+					<select class="form-control" ng-model="baseCurrencyCode" ng-change="baseCurrencyCodeChange()">
+						<option ng-repeat="c in selectedCurrencies" value="{{c.code}}">{{c.symbol}}</option>
+					</select>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="col-sm-4">
+		
+		<div class="row">
+			<div class="col-md-12">				
+				
+					<table class="accounts">
+						<thead>
+							<tr>
+								<th class="account" colspan="2">Сбережения</th>
+								<th class="converted">В моей валюте,&nbsp;{{(selectedCurrencies | filter:baseCurrencyCode:strict)[0].symbol}}</th>
+								<th class="interest" ng-class="{disabled: !interestFlag}">Ставки вкладов,&nbsp;%</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="c in selectedCurrencies" class="form-group  {{c.code}}">
+								<td class="currencySymbol {{c.code}}"><span>{{c.symbol}}</span></td>
+								<td class="account"><input class="form-control" ng-model="c.account" type="text" ng-change="accountChange(c.code, c.account)"></td>
+								<td class="converted"><span>{{c.converted | niceConverted}}</span></td>
+								<td class="interest"><input ng-disabled="!interestFlag" class="form-control" ng-model="c.interest" type="text" ng-change="interestChange(c.code, c.interest)"></td>
+							</tr>
+						</tbody>
+					</table>
+
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-12">		 
+				<button class="btn btn-primary" ng-click="addCurrency()">+ Валюта</button>
+			</div>
+		</div>	
+				
+	</div>
+	
+	<div class="col-sm-4">
+		<div ng-show="selectedCurrencies.length > 1" class="ratesChartContainer">
+			<p>История и прогноз курсов</p>
+			<p>Перетащите точку, чтобы изменить прогноз</p>
+			<div rates-chart chart-data="ratesChartData" update-predictions-progress="updatePredictions(data)" update-predictions-end="setPredictions(data)"></div>
+		</div>
+	</div>
+	
+	<div class="col-sm-4">
+		<div ng-show="savingsChartData.today > 0" class="savingsChartContainer">
+			<div savings-chart chart-data="savingsChartData"></div>
+		</div>		
+	</div>		
+		
+</div>
+
+<div class="row">
+	<div class="col-sm-12 text-right">
+		<a class="btn btn-primary" href="mailto:?body=Ссылка%20на%20расчёт:%0D%0A%0D%0A{{link}}">Поделиться</a>
+	</div>
+</div>
+
+<div class="row" style="margin-top: 40px;">
+	<div class="col-sm-12">
+		<div class="alert alert-danger" ng-show="importWarning">Текущий расчёт импортирован по ссылке, поэтому изменения не будут сохранены.
+			<button class="btn btn-warning" ng-click="saveImported()">Сохранить вместо моего</a>
+		</div>
+		
+		<div class="alert alert-warning">Внимание! Это демонстрационное приложение выполнено по тестовому заданию работодателя. Приложение не отлажено и не предназначено для полноценного использования.</div>
+	</div>
+</div>
+
+
+</div>
+
+

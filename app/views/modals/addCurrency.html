@@ -1,0 +1,27 @@
+<div class="modal-header">
+	<h2 class="modal-title">Выбор валюты</h2>
+</div>
+<div class="modal-body">
+
+<div curr-list 
+	available-currencies="availableCurrencies"
+	selected-currencies-codes="selectedCurrenciesCodes"
+></div>
+
+
+<div class="alert alert-danger" ng-show="selectedCurrenciesCodes.indexOf(baseCurrencyCode) < 0">
+		<div class="row">
+			<div class="col-md-10">Вы хотите исключить валюту, которая была установлена в качестве «Моя валюта». Верните обратно или выберите другую.</div>
+			<div class="col-md-2">
+				<select class="form-control" ng-model="baseCurrencyCode">
+					<option ng-repeat="c in getNewSelectedCurrencies()" value="{{c.code}}">{{c.symbol}}</option>
+				</select>
+			</div>
+		</div>
+</div>
+
+
+</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" ng-disabled="selectedCurrenciesCodes.indexOf(baseCurrencyCode) < 0" type="button" ng-click="ok()">OK</button>
+</div>

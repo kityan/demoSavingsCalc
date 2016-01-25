@@ -8,7 +8,7 @@ myApp.factory('RatesApiManager', ['Config', '$resource', '$filter', function(Con
 	Service.getRates = function(baseCurrencyCode, selectedCurrenciesCodes){
 		
 		return this.api.get({
-			to: $filter('date')(new Date('2016-01-23'), 'yyyy-MM-dd'), 
+			to: $filter('date')(new Date(), 'yyyy-MM-dd'), 
 			b: baseCurrencyCode, 
 			c: selectedCurrenciesCodes.join(';')});
 	}

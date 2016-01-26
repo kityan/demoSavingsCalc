@@ -192,6 +192,7 @@ label.interestFlag {
 			text-anchor: middle;
 			padding-bottom: 3px;
 			transform: translate(0px, -10px);
+			-webkit-transform: translate(0px, -10px);
 			visibility: hidden;
 			pointer-events: none;
 		}
@@ -247,17 +248,20 @@ svg.ratesChart .currency {
 
 svg.ratesChart text.xLabelToday {
 	transform: translate(2px, 25px);
+	-webkit-transform: translate(2px, -25px);
 	text-anchor: middle;
 }
 
 svg.ratesChart text.xLabelYear {
 	transform: translate(4px, 25px);
+	-webkit-transform: translate(4px, 25px);
 	text-anchor: end;
 }
 
 
 svg.ratesChart text.xLabelYearBefore {
 	transform: translate(-2px, 25px);
+	-webkit-transform: translate(-2px, 25px);
 	text-anchor: start;
 }
 
@@ -274,16 +278,19 @@ svg.savingsChart .axis line,
 
 svg.savingsChart text.xLabelToday {
 	transform: translate(2px, 20px);
+	-webkit-transform: translate(2px, 20px);
 	text-anchor: start;
 }
 
 svg.savingsChart text.xLabelYear {
 	transform: translate(-2px, 20px);
+	-webkit-transform: translate(-2px, -20px);
 	text-anchor: end;
 }
 
 svg.savingsChart text.xLabelTodayValue {
 	transform: translate(2px, 40px);
+	-webkit-transform: translate(2px, 40px);
 	text-anchor: start;
 	font-size: 16px;
 	font-weight: bold;
@@ -295,6 +302,7 @@ svg.savingsChart text.largeValue {
 
 svg.savingsChart text.xLabelYearValue {
 	transform: translate(-2px, 40px);
+	-webkit-transform: translate(-2px, 40px);
 	text-anchor: end;
 	font-size: 16px;
 	font-weight: bold;	
@@ -303,6 +311,7 @@ svg.savingsChart text.xLabelYearValue {
 
 svg.savingsChart text.yLabelTickPostfix {
 	transform: translate(4px, 4px);
+	-webkit-transform: translate(4px, 4px);
 	text-anchor: start;
 }
 

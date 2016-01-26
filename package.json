@@ -1,6 +1,6 @@
 {
   "name": "demo-savings-calc",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Demo for employer.",
   "devDependencies": {
     "gulp": "^3.9.0",
